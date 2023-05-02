@@ -1,0 +1,47 @@
+.hero-container {
+    background-image: url('/src/Images/back_1.jpg');
+    background-size: cover;
+    height: 500px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+  
+.topic_doc{
+    color: #000;
+}
+
+  .hero-content {
+    width: 50%;
+    text-align: left;
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .channel-button {
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+  .doctor-search-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -5,6 +5,9 @@ const cors = require('cors');
 const app = express();
 const multer = require('multer');
 
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 
 const upload = multer({ dest: 'uploads/' }); // specify the directory where files will be uploaded
 

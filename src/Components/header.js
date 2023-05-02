@@ -19,9 +19,13 @@ export default function Header() {
         </button>
 
         <ul className={`header-list ${showMenu ? 'show-menu' : ''}`}>
-          
+
+        <Link to='/Doctors'>
+          <li className='header-list-item'>Doctors</li>
+        </Link>  
+
         <Link to='/Services'>
-          <li className='header-list-item'>Service</li>
+          <li className='header-list-item'>Services</li>
         </Link>
 
           <Link to='/Aboutus'>

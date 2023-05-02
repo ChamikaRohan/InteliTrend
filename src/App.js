@@ -10,6 +10,7 @@ import UserUploads from './Pages/UserUploads';
 import ServicesPage from './Pages/ServicesPage';
 import FileUpload from './Pages/FileUpload';
 import Dashboard from './Pages/Dashboard';
+import Doctors from './Pages/DoctorsPage';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Route path="/FileShow" element={<FileShow/>}/>
       <Route path="/Uploads" element={<UserUploads/>}/>
       <Route path="/Services" element={<ServicesPage/>}/>
+      <Route path="/Doctors" element={<Doctors/>}/>
     </Routes>
     </Router>
   );

@@ -167,5 +167,83 @@
     font-size: 700%;
   }
 
+  .buttonupload {
+    display: flex;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    margin-left: 30%;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    width: 170px;
+    border: none;
+    background: #FF9F00;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .labletext {
+    margin-top: 1px;
+    font-size: 15px;
+    line-height: 10px;
+    color: white;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+  }
+  
+  .buttonupload:hover {
+    background: #f5b959;
+  }
+  
+  .buttonupload:hover .svg-icon {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(-8deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(8deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+  .buttonlogout {
+    display: 'flex';
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    width: 170px;
+    border: none;
+    background: #FF9F00;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .buttonlogout:hover {
+    background: #f5b959;
+  }
+  
+  .profile-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .p-button{
+    margin:3% 5% 3% 5%;
+  }
 
   

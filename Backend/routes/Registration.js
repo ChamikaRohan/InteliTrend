@@ -65,6 +65,20 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+router.post("/uploadpropic", async (req, res) => {
+  const { base64 } = req.body;
+  const token = req.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'your secret here');
+  const userId = decoded.userId;
+  try {
+    await Registration.findByIdAndUpdate(userId, { image: base64 });
+    res.send({ Status: "ok" });
+  } catch (error) {
+    res.send({ Status: "error", data: error });
+  }
+});
+
+
 
 router.get('/photos', async (req, res) => {
   try {
@@ -76,12 +90,13 @@ router.get('/photos', async (req, res) => {
     // Get the list of files in the user's subdirectory
     const subfolder = `uploads/${userId}`;
     const files = await fs.promises.readdir(subfolder);
-
     // Send the list of files back to the client
     return res.status(200).json({
       success: true,
       message: 'Photos retrieved successfully.',
       files: files,
+      Id: userId,
+
     });
   } catch (error) {
     console.error(error);
@@ -108,7 +123,8 @@ router.post('/register', async (req, res) => {
       email,
       dateOfBirth,
       mobileNumber,
-      password
+      password,
+      image
     });
 
     // Save the new registration document to the database

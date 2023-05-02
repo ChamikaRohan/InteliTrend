@@ -6,6 +6,7 @@ function FileUploadCom() {
 
   const [category, setCategory] = useState('');
   const [file, setFile] = useState(null);
+  const[image,setImage]=useState("");
   var catogorystring =null;
 
   const handleFileInputChange = (e) => {
@@ -93,11 +94,30 @@ function FileUploadCom() {
                             ></path>{" "}
                         </g>
                         </svg>{" "}
-                        <label htmlFor="fileInput">Select a file to upload:</label>
-                        <input type="file" id="fileInput" onChange={handleFileInputChange} />
-                        <button type="button" onClick={handleFileUpload}>
-                            Upload File
-                            </button>
+                        <label className="topicfile">Select a file to upload:</label>
+
+                        <label for="file-input" class="choose-file-button">
+                            <svg
+                              class="icon"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                d="M12 3v18m-9-9h18"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </svg>
+                            Choose File
+                            <input id="file-input" type="file" />
+                          </label>
+
+                        <button class="button" onClick={handleFileUpload}>
+                        <svg class="svg-icon" width="24" viewBox="0 0 24 24" height="24" fill="none"><g stroke-width="2" stroke-linecap="round" stroke="#ffffff" fill-rule="evenodd" clip-rule="evenodd"><path d="m3 7h17c.5523 0 1 .44772 1 1v11c0 .5523-.4477 1-1 1h-16c-.55228 0-1-.4477-1-1z"></path><path d="m3 4.5c0-.27614.22386-.5.5-.5h6.29289c.13261 0 .25981.05268.35351.14645l2.8536 2.85355h-10z"></path></g></svg>
+                        <span class="lable">Upload Files</span>
+                        </button>
                     </div>
                     
                     <input id="file" type="file" />
