@@ -1,0 +1,102 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Railway', sans-serif;
+  font-weight: bold;
+}
+
+.header-logo {
+  height: 50px;
+}
+
+.header-list {
+  display: flex;
+  list-style: none;
+  margin: 0 20px;
+  margin-left: auto;
+  padding: 0;
+}
+
+.header-list-item {
+  margin: 0 50px;
+}
+
+.signup-button {
+  background-color: #FF9F00;
+  color:white ;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.signup-button:hover {
+  background-color: #555;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+} 
+
+.signup-button:hover{
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  .header-list {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+.show-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.show-menu li {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.show-menu li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .show-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .show-menu li {
+    text-align: center;
+  }
+
+}
+
+@media (min-width: 768px){
+  .hamburger{
+    display: none;
+  }
+}
