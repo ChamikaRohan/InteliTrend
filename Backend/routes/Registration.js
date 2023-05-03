@@ -34,12 +34,14 @@ const upload = multer({ storage: storage });
 router.post('/upload', upload.single('file'), async (req, res) => {
   
   if (!req.file) {
+    console.log('if');
     return res.status(400).send('No file uploaded.');
   }
 
   // Do something with the uploaded file, such as saving it to a database or displaying it on a webpage
 
   try {
+    console.log('try');
     const token = req.headers.authorization.split(' ')[1];
     const type = req.headers.type; // Extract the Type header value
     // Verify the JWT token
@@ -56,6 +58,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
       filePath: filePath,
     });
   } catch (error) {
+    console.log('err');
     console.error(error);
     return res.status(500).json({
       success: false,

@@ -116,14 +116,32 @@ const Profile = () => {
     <div className='profile'>
       <div className="profile-container">
         <div className="pic-container">
+
+          <label for="file-input" className="plus">
+            <svg
+              className="icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 3v18m-9-9h18"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <input id="file-input" type="file" className="pro" accept='image/*' onChange={convertToBase64} />
+          </label>
+
+
           {!image ? (
             <img src={profileImage} alt="" />
           ) : (
             <img src={image} alt="" className="profile-image" />
           )}
 
-          <input type="file" className="pro" accept='image/*' onChange={convertToBase64} />
-          <button onClick={uploadImage}>Upload</button>
+          <button className="uploadbut" onClick={uploadImage}>Upload</button>
 
           <div className="profile-details">
             <h1 className="Name">{userData.firstName} {userData.lastName}</h1>

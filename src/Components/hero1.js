@@ -2,7 +2,7 @@ import React from "react";
 import "./hero1.css";
 import Image1 from "../Images/HeroImage.png";
 import { Button, Navbar, Container } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 class Hero1 extends React.Component {
   render() {
@@ -29,7 +29,10 @@ class Hero1 extends React.Component {
             </p>
             <p> patient care and comply with regulatory requirements.</p>
             <div className="buttonsDiv">
-              <button class="JoinUs_button">Join Us</button>
+              <Link to='/Signup'>
+                <button class="JoinUs_button">Join Us</button>
+              </Link>
+
               <Link to='/Aboutus'>
                 <button class="moreinfo_button">More Info</button>
               </Link>

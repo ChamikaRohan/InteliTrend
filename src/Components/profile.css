@@ -88,10 +88,25 @@
     color: #464444;
 }
 
-.repot-button:hover, .pic-container img:hover{
+.repot-button:hover{
     cursor: pointer;
     transform: scale(1.05);
     transition: transform 0.3s ease-in-out; 
+}
+
+.uploadbut
+{
+    margin-left: 36%;
+    background-color: #F2AF3E;
+    border-radius: 5px;
+    width: 90px;
+    height: 26px;
+    font-size: 15px;
+}
+
+.plus:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .charts{
@@ -231,6 +246,18 @@
     cursor: pointer;
   }
 
+  .icon{
+    position: absolute;
+    top: 46%;
+    left: 400px;
+    border-radius: 10px;
+    background-color: #58c6c2;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+  
   .buttonlogout:hover {
     background: #f5b959;
   }
