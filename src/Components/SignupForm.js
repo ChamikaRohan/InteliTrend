@@ -106,9 +106,9 @@ function SignupForm() {
                         </div>
 
                     <button type='submit' className='sign-up-button'>SUBMIT</button>
+
                     </form>
-                </div>
-                
+                </div>      
 
             </div>
         </div>
