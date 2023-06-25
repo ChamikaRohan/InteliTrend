@@ -47,6 +47,10 @@ function SignupForm() {
                     <Link to='/Login'>
                     <button className='login-button-2'>LOG IN</button>
                     </Link>
+
+                    <Link to='/DocSignup'>
+                    <button className='login-button-2'>DocLogin</button>
+                    </Link>
                     
                 </div>
                 

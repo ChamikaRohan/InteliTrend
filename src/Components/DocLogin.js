@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default function LoginForm() {
+export default function DocLogin() {
 
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
@@ -13,7 +13,7 @@ export default function LoginForm() {
 
     const handleLogin = async ()=> {
         try{
-            const response = await axios.post('http://localhost:8000/auth', {
+            const response = await axios.post('http://localhost:8000/docauth', {
                 email : Email,
                 password: Password
             });
@@ -46,9 +46,6 @@ export default function LoginForm() {
             <div className='login-background-box'>
                 <div className='link-signup'>
                     <p>Don't have and Account?</p>
-                    <Link to='/DocLogin'>
-                    <button className='sign-up-button-1'>Are you a doctor?</button>
-                    </Link>
                     <Link to='/Signup'>
                     <button className='sign-up-button-1'>SIGN UP</button>
                     </Link>
@@ -56,7 +53,7 @@ export default function LoginForm() {
                 </div>
                 <div className='login-heading'>
                     <span>Welcome to InteliTrend</span>
-                    <p>Log in to your account</p>
+                    <p>Log in to your account as a doctor</p>
                 </div>
 
                 <div className='login-form'>

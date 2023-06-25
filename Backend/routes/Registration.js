@@ -34,7 +34,6 @@ const upload = multer({ storage: storage });
 router.post('/upload', upload.single('file'), async (req, res) => {
   
   if (!req.file) {
-    console.log('if');
     return res.status(400).send('No file uploaded.');
   }
 
@@ -126,8 +125,7 @@ router.post('/register', async (req, res) => {
       email,
       dateOfBirth,
       mobileNumber,
-      password,
-      image
+      password
     });
 
     // Save the new registration document to the database

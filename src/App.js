@@ -12,6 +12,11 @@ import FileUpload from './Pages/FileUpload';
 import Dashboard from './Pages/Dashboard';
 import Doctors from './Pages/DoctorsPage';
 import './App.css';
+import DocSignup from './Pages/DocSignup';
+import DocLogin from './Components/DocLogin';
+import DocLoginPage from './Pages/DocLoginPage';
+import DocListPage from './Pages/DocListPage';
+import DocProfilePage from './Pages/DocProfilePage';
 
 function App() {
   return (
@@ -29,6 +34,10 @@ function App() {
       <Route path="/Uploads" element={<UserUploads/>}/>
       <Route path="/Services" element={<ServicesPage/>}/>
       <Route path="/Doctors" element={<Doctors/>}/>
+      <Route path="/DocSignup" element={<DocSignup/>}/>
+      <Route path="/DocLogin" element={<DocLoginPage/>}/>
+      <Route path="/Doclist" element={<DocListPage/>}/>
+      <Route PATH="/DocProfilePage" element={<DocProfilePage/>}/>
     </Routes>
     </Router>
   );
