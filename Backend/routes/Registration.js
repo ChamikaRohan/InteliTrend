@@ -67,6 +67,57 @@ router.post('/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+
+// Define the API endpoint to fetch the list of files
+router.get('/filesshow', async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const type = req.headers.type; // Extract the Type header value
+    const decoded = jwt.verify(token, 'your secret here');
+    const userId = decoded.userId;
+    const folderPath = `uploads/${userId}/${type}`;
+
+    // Read the contents of the directory
+    fs.readdir(folderPath, (err, files) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({
+          success: false,
+          message: 'Server error while fetching files.',
+          error: err,
+        });
+      }
+
+      // Filter out any non-file items
+      const fileNames = files.filter((file) => fs.statSync(path.join(folderPath, file)).isFile());
+
+      // Create an array of objects containing both file names and file paths
+      const fileList = fileNames.map((file) => {
+        return {
+          fileName: file,
+          filePath: `${folderPath}/${file}`,
+        };
+      });
+
+      return res.status(200).json({
+        success: true,
+        files: fileList,
+      });
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      success: false,
+      message: 'Server error while fetching files.',
+      error: error,
+    });
+  }
+});
+
+
+// Serve the files using a static route
+router.use('/uploads', express.static('uploads'));
+
 router.post("/uploadpropic", async (req, res) => {
   const { base64 } = req.body;
   const token = req.headers.authorization.split(' ')[1];
@@ -98,7 +149,6 @@ router.get('/photos', async (req, res) => {
       message: 'Photos retrieved successfully.',
       files: files,
       Id: userId,
-
     });
   } catch (error) {
     console.error(error);
@@ -109,6 +159,41 @@ router.get('/photos', async (req, res) => {
     });
   }
 });
+
+router.get('/getpropic', async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+  const decoded = jwt.verify(token, 'your secret here');
+  const userId = decoded.userId;
+
+    // Retrieve the user from the database based on the user ID
+    const user = await Registration.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found.',
+      });
+    }
+
+    const { image } = user; // Get the image property from the user document
+
+    // Send the image as a response
+    res.status(200).json({
+      success: true,
+      message: 'Profile picture retrieved successfully.',
+      image: image,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while retrieving profile picture.',
+      error: error,
+    });
+  }
+});
+
 
 
 // Route to handle POST requests to create a new registration document in the database
@@ -155,8 +240,6 @@ router.post('/auth', async (req, res) => {
 
     // If the user is found, respond with a success message
     const token = jwt.sign({ userId: user._id }, 'your secret here');
-
-    console.log(`Token: ${token}`);
     res.json({ token, msg: 'Authenticated successfully' });
     
 

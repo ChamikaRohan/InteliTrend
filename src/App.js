@@ -11,6 +11,8 @@ import ServicesPage from './Pages/ServicesPage';
 import FileUpload from './Pages/FileUpload';
 import Dashboard from './Pages/Dashboard';
 import Doctors from './Pages/DoctorsPage';
+import PropicPopUp from './Pages/ProfilePicPopUp';
+import UploadedFilesShow from './Pages/UploadedFilesShow'
 import './App.css';
 import DocSignup from './Pages/DocSignup';
 import DocLogin from './Components/DocLogin';
@@ -38,6 +40,8 @@ function App() {
       <Route path="/DocLogin" element={<DocLoginPage/>}/>
       <Route path="/Doclist" element={<DocListPage/>}/>
       <Route PATH="/DocProfilePage" element={<DocProfilePage/>}/>
+      <Route path="/PropicPopUp" element={<PropicPopUp/>}/>
+      <Route path="/UploadedFiles" element={<UploadedFilesShow/>}/>
     </Routes>
     </Router>
   );

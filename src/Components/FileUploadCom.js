@@ -109,7 +109,7 @@ function FileUploadCom() {
                               />
                             </svg>
                             Choose File
-                            <input id="file-input" type="file" onChange={handleFileInputChange}/>
+                            <input id="file" type="file" onChange={handleFileInputChange}/>
                           </label>
 
                         <button className="button" onClick={handleFileUpload}>

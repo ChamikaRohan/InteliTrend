@@ -10,6 +10,66 @@ const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [error, setError] = useState(null);
   const [image, setImage] = useState("");
+  const [profilePicture, setProfilePicture] = useState("");
+
+  useEffect(() => {
+    fetchProfilePicture();
+  }, []);
+
+  function convertToBase64(e) {
+    var reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      setImage(reader.result);
+    };
+
+    reader.onerror = error => {
+      console.log("Error: ", error);
+    };
+  }
+
+  const token = localStorage.getItem('token');
+
+  function uploadImage() {
+    fetch("http://localhost:8000/uploadpropic", {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Acess-Control-Allow-Original": "*",
+      },
+      body: JSON.stringify({
+        base64: image,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        fetchProfilePicture(); // Fetch the updated profile picture after uploading
+      });
+  }
+
+  function fetchProfilePicture() {
+    const token = localStorage.getItem('token');
+  
+    axios.get("http://localhost:8000/getpropic", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.data.success) {
+          const { image } = res.data;
+          setProfilePicture(image);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
 
 
   useEffect(() => {
@@ -35,6 +95,7 @@ const Profile = () => {
         setError(error.response.data.msg);
       }
     };
+
 
     fetchUserData();
   }, []);
@@ -74,39 +135,6 @@ const Profile = () => {
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 
-  function convertToBase64(e) {
-    console.log(e);
-    var reader = new FileReader();
-    reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      console.log(reader.result); //base64encoded string
-      setImage(reader.result);
-    };
-
-    reader.onerror = error => {
-      console.log("Error: ", error);
-    };
-
-  }
-  const token = localStorage.getItem('token');
-  function uploadImage() {
-    fetch("http://localhost:8000/uploadpropic", {
-      method: "POST",
-      crossDomain: true,
-      headers: {
-        Authorization: `Bearer ${token}`, // Include JWT token in request headers
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Acess-Control-Allow-Original": "*",
-      },
-      body: JSON.stringify({
-        base64: image,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }
-
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/Login');
@@ -134,12 +162,7 @@ const Profile = () => {
             <input id="file-input" type="file" className="pro" accept='image/*' onChange={convertToBase64} />
           </label>
 
-
-          {!image ? (
-            <img src={profileImage} alt="" />
-          ) : (
-            <img src={image} alt="" className="profile-image" />
-          )}
+          <img src={profilePicture} className="profile-image" alt="Profile Picture" />
 
           <button className="uploadbut" onClick={uploadImage}>Upload</button>
 
