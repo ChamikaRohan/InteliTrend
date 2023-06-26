@@ -11,8 +11,8 @@ import ServicesPage from './Pages/ServicesPage';
 import FileUpload from './Pages/FileUpload';
 import Dashboard from './Pages/Dashboard';
 import Doctors from './Pages/DoctorsPage';
-import PropicPopUp from './Pages/ProfilePicPopUp';
 import UploadedFilesShow from './Pages/UploadedFilesShow'
+import DocSignup from './Pages/DocSignup';
 import './App.css';
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
       <Route path="/Uploads" element={<UserUploads/>}/>
       <Route path="/Services" element={<ServicesPage/>}/>
       <Route path="/Doctors" element={<Doctors/>}/>
-      <Route path="/PropicPopUp" element={<PropicPopUp/>}/>
       <Route path="/UploadedFiles" element={<UploadedFilesShow/>}/>
+      <Route path="/DocSignup" element={<DocSignup/>}/>
     </Routes>
     </Router>
   );

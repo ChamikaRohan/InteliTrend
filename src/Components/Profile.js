@@ -51,6 +51,7 @@ const Profile = () => {
       });
   }
 
+
   function fetchProfilePicture() {
     const token = localStorage.getItem('token');
   
@@ -146,25 +147,23 @@ const Profile = () => {
         <div className="pic-container">
 
           <label for="file-input" className="plus">
-            <svg
-              className="icon"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M12 3v18m-9-9h18"
-                stroke="#ffffff"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <input id="file-input" type="file" className="pro" accept='image/*' onChange={convertToBase64} />
+            
+          <label htmlFor="fileInput" className="custom-file-input">
+  +
+</label>
+<input
+  id="fileInput"
+  type="file"
+  className="pro"
+  accept="image/*"
+  onChange={convertToBase64}
+  style={{ display: 'none' }}
+/>
           </label>
 
           <img src={profilePicture} className="profile-image" alt="Profile Picture" />
+          <button type="button" className="uploadbut" onClick={uploadImage}>&#10004;</button>
 
-          <button className="uploadbut" onClick={uploadImage}>Upload</button>
 
           <div className="profile-details">
             <h1 className="Name">{userData.firstName} {userData.lastName}</h1>
