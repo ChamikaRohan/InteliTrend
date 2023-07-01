@@ -25,7 +25,7 @@ function Doc_Signup() {
         console.log('Submitted: ',formData);
         try{
             axios.post('http://localhost:8000/doctor', formData);
-            //navigate('/Login');
+            navigate('/DocLogin');
         }
         catch(error){
             console.log('error', error);
@@ -47,7 +47,7 @@ function Doc_Signup() {
             <div className='form-container'>
                 <div className='login-link'>
                     <p>Already have an account?</p>
-                    <Link to='/Login'>
+                    <Link to='/DocLogin'>
                     <button className='login-button-2'>LOG IN</button>
                     </Link>
                     

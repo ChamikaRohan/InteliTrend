@@ -11,14 +11,12 @@ import ServicesPage from './Pages/ServicesPage';
 import FileUpload from './Pages/FileUpload';
 import Dashboard from './Pages/Dashboard';
 import Doctors from './Pages/DoctorsPage';
-import PropicPopUp from './Pages/ProfilePicPopUp';
 import UploadedFilesShow from './Pages/UploadedFilesShow'
-import './App.css';
 import DocSignup from './Pages/DocSignup';
-import DocLogin from './Components/DocLogin';
-import DocLoginPage from './Pages/DocLoginPage';
-import DocListPage from './Pages/DocListPage';
+import DocLogin from './Pages/DocLogin';
 import DocProfilePage from './Pages/DocProfilePage';
+import './App.css';
+
 
 function App() {
   return (
@@ -36,12 +34,10 @@ function App() {
       <Route path="/Uploads" element={<UserUploads/>}/>
       <Route path="/Services" element={<ServicesPage/>}/>
       <Route path="/Doctors" element={<Doctors/>}/>
-      <Route path="/DocSignup" element={<DocSignup/>}/>
-      <Route path="/DocLogin" element={<DocLoginPage/>}/>
-      <Route path="/Doclist" element={<DocListPage/>}/>
-      <Route PATH="/DocProfilePage" element={<DocProfilePage/>}/>
-      <Route path="/PropicPopUp" element={<PropicPopUp/>}/>
       <Route path="/UploadedFiles" element={<UploadedFilesShow/>}/>
+      <Route path="/DocSignup" element={<DocSignup/>}/>
+      <Route path="/DocLogin" element={<DocLogin/>}/>
+      <Route path="/DocProfilePage" element={<DocProfilePage/>}/>
     </Routes>
     </Router>
   );

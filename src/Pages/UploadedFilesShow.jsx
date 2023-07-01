@@ -14,7 +14,7 @@ const FilesShow = () => {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`,
-        Type: 'Eyes',
+        Type: 'Heart',
       },
     })
       .then(response => response.json())

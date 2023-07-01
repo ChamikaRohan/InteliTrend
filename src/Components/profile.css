@@ -94,16 +94,6 @@
     transition: transform 0.3s ease-in-out; 
 }
 
-.uploadbut
-{
-    margin-left: 36%;
-    background-color: #F2AF3E;
-    border-radius: 5px;
-    width: 90px;
-    height: 26px;
-    font-size: 15px;
-}
-
 .plus:hover{
     cursor: pointer;
     transform: scale(1.1);
@@ -201,7 +191,7 @@
   .labletext {
     margin-top: 1px;
     font-size: 15px;
-    line-height: 10px;
+    line-height: 1px;
     color: white;
     font-family: sans-serif;
     letter-spacing: 1px;
@@ -214,7 +204,7 @@
   .buttonupload:hover .svg-icon {
     animation: spin 1s linear infinite;
   }
-  
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -246,22 +236,60 @@
     cursor: pointer;
   }
 
-  .icon{
-    position: absolute;
-    top: 46%;
-    left: 400px;
-    border-radius: 10px;
-    background-color: #58c6c2;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-  }
-  
   .buttonlogout:hover {
     background: #f5b959;
   }
+
+  .custom-file-input {
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    cursor: pointer;
+    font-size: 28px;
+    position: relative;
+  }
   
+  .custom-file-input:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: green;
+    content: "";
+    position: absolute;
+    top: 23%;
+    left:23%;
+  }
+  
+
+  .uploadbut {
+    display: inline-block;
+    padding: 1px;
+    width: 2px;
+    height: 2px;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .uploadbut:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: green;
+  }
+  
+
   .profile-buttons{
     display: flex;
     flex-direction: row;

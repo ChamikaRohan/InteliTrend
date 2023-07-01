@@ -18,9 +18,15 @@ const docRoutes = require("./routes/Doctor")
 app.use(regRoutes);
 app.use(docRoutes);
 
+const docRoutes = require("./routes/Doctor")
+app.use(docRoutes);
+
 
 // Import middleware
 const authMiddleware = require('./middleware/auth');
+
+app.use('/profile', authMiddleware, docRoutes);
+
 // Use the authMiddleware function for the /api/profile route
 app.use('/profile', authMiddleware, regRoutes);
 app.use('/profile', authMiddleware, docRoutes);
