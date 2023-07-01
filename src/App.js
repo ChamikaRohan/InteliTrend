@@ -14,6 +14,7 @@ import Doctors from './Pages/DoctorsPage';
 import UploadedFilesShow from './Pages/UploadedFilesShow'
 import DocSignup from './Pages/DocSignup';
 import DocLogin from './Pages/DocLogin';
+import DocProfilePage from './Pages/DocProfilePage';
 import './App.css';
 
 
@@ -36,6 +37,7 @@ function App() {
       <Route path="/UploadedFiles" element={<UploadedFilesShow/>}/>
       <Route path="/DocSignup" element={<DocSignup/>}/>
       <Route path="/DocLogin" element={<DocLogin/>}/>
+      <Route path="/DocProfilePage" element={<DocProfilePage/>}/>
     </Routes>
     </Router>
   );
