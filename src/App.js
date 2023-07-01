@@ -13,7 +13,9 @@ import Dashboard from './Pages/Dashboard';
 import Doctors from './Pages/DoctorsPage';
 import UploadedFilesShow from './Pages/UploadedFilesShow'
 import DocSignup from './Pages/DocSignup';
+import DocLogin from './Pages/DocLogin';
 import './App.css';
+
 
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
       <Route path="/Doctors" element={<Doctors/>}/>
       <Route path="/UploadedFiles" element={<UploadedFilesShow/>}/>
       <Route path="/DocSignup" element={<DocSignup/>}/>
+      <Route path="/DocLogin" element={<DocLogin/>}/>
     </Routes>
     </Router>
   );

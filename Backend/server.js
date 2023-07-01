@@ -16,9 +16,15 @@ app.use(cors());
 const regRoutes = require("./routes/Registration")
 app.use(regRoutes);
 
+const docRoutes = require("./routes/Doctor")
+app.use(docRoutes);
+
 
 // Import middleware
 const authMiddleware = require('./middleware/auth');
+
+app.use('/profile', authMiddleware, docRoutes);
+
 // Use the authMiddleware function for the /api/profile route
 app.use('/profile', authMiddleware, regRoutes);
 
