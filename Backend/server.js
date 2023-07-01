@@ -14,7 +14,9 @@ const upload = multer({ dest: 'uploads/' }); // specify the directory where file
 app.use(bodyParser.json());
 app.use(cors());
 const regRoutes = require("./routes/Registration")
+const docRoutes = require("./routes/Doctor")
 app.use(regRoutes);
+app.use(docRoutes);
 
 const docRoutes = require("./routes/Doctor")
 app.use(docRoutes);
@@ -27,9 +29,14 @@ app.use('/profile', authMiddleware, docRoutes);
 
 // Use the authMiddleware function for the /api/profile route
 app.use('/profile', authMiddleware, regRoutes);
+app.use('/profile', authMiddleware, docRoutes);
 
 const PORT = 8000;
 const URL = "mongodb+srv://ChamikaRohan:imGM7unA820lbHUj@databasecluster.qsvupdi.mongodb.net/InteliTrendServer?retryWrites=true&w=majority"
+
+
+
+
 
 mongoose.connect(URL)
  .then(()=>{
