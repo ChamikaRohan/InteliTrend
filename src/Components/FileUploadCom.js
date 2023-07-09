@@ -17,42 +17,45 @@ function FileUploadCom() {
   const handleFileUpload = (event) => {
     switch (category) {
         case '10':
-          catogorystring = 'General Reports';
+          catogorystring = 'general';
         break;
         case '20':
-            catogorystring = 'Heart';
+            catogorystring = 'heart';
           break;
         case '30':
-            catogorystring = 'Brain';
+            catogorystring = 'brain';
           break;
         case '40':
-            catogorystring = 'Diabetics';
+            catogorystring = 'diabetics';
           break;
         case '50':
-            catogorystring = 'Bone fractures';
+            catogorystring = 'bonefractures';
         break;
         case '60':
-            catogorystring = 'Other';
+            catogorystring = 'other';
       }
-    const formData = new FormData();
-    formData.append('file', file);
-    console.log(formData.get('file'));
-    const token = localStorage.getItem('token');
-
-    axios.post('http://localhost:8000/upload', formData, {
-      headers: {
-        Authorization: `Bearer ${token}`, // Include JWT token in request headers
-        Type: catogorystring
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        // Do something with the response from the backend
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+      const formData = new FormData();
+      formData.append('doc', file);
+  
+      const token = localStorage.getItem('token');
+  
+      axios
+        .post('http://localhost:8000/upload-doce', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            type: catogorystring
+          },
+        })
+        .then((response) => {
+          console.log(response.data.msg);
+          // Handle success response
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle error response
+        });
+    };
+  
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value);

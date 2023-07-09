@@ -220,11 +220,11 @@ const Profile = () => {
           <div className="reoprts-container">
             <div className="reprts-heading"><span>My Medical Reports</span></div>
 
-            <button type='submit' className='repot-button'>General Reports</button>
-            <button type='submit' className='repot-button'>Heart Related</button>
-            <button type='submit' className='repot-button'>Brain Related</button>
-            <button type='submit' className='repot-button'>Diabetics</button>
-            <button type='submit' className='repot-button'>Bone fractures</button>
+            <Link to='/GenaralFiles'> <button type='submit' className='repot-button'>General Reports</button> </Link> 
+            <Link to='/HeartFiles'> <button type='submit' className='repot-button'>Heart Related</button> </Link> 
+            <Link to='/BrainFiles'> <button type='submit' className='repot-button'>Brain Related</button> </Link> 
+            <Link to='/DiabeticFiles'> <button type='submit' className='repot-button'>Diabetics</button> </Link> 
+            <Link to='/BfractureFiles'> <button type='submit' className='repot-button'>Bone fractures</button> </Link> 
 
           </div>
         </div>

@@ -15,6 +15,14 @@ import UploadedFilesShow from './Pages/UploadedFilesShow'
 import DocSignup from './Pages/DocSignup';
 import DocLogin from './Pages/DocLogin';
 import DocProfilePage from './Pages/DocProfilePage';
+import HeartPage from './Pages/FilesPages/HeartPage';
+import BrainPage from './Pages/FilesPages/BrainPage';
+import GeneralPage from './Pages/FilesPages/GeneralPage';
+import BonePage from './Pages/FilesPages/BonePage';
+import DiabeticPage from './Pages/FilesPages/DiabeticPage';
+import OtherPage from './Pages/FilesPages/OtherPage';
+import TestUp from './Pages/TestUp';
+import Show from './Pages/Show';
 import './App.css';
 
 
@@ -38,6 +46,14 @@ function App() {
       <Route path="/DocSignup" element={<DocSignup/>}/>
       <Route path="/DocLogin" element={<DocLogin/>}/>
       <Route path="/DocProfilePage" element={<DocProfilePage/>}/>
+      <Route path="/HeartFiles" element={<HeartPage/>}/>
+      <Route path="/BrainFiles" element={<BrainPage/>}/>
+      <Route path="/GeneralFiles" element={<GeneralPage/>}/>
+      <Route path="/BfractureFiles" element={<BonePage/>}/>
+      <Route path="/DiabeticFiles" element={<DiabeticPage/>}/>
+      <Route path="/OtherFiles" element={<OtherPage/>}/>
+      <Route path="/Up" element={<TestUp/>}/>
+      <Route path="/Show" element={<Show/>}/>
     </Routes>
     </Router>
   );
