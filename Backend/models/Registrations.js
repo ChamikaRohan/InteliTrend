@@ -32,8 +32,35 @@ const RegistrationSchema = new mongoose.Schema({
   image: {
     type: String,
     required: false
-  } 
-
+  },
+  doc: [{
+    type: Buffer,
+    required: false
+  }],
+  heart: [{
+    type: Buffer,
+    required: false
+  }],
+  brain: [{
+    type: Buffer,
+    required: false
+  }],
+  diabetics: [{
+    type: Buffer,
+    required: false
+  }],
+  bonefractures: [{
+    type: Buffer,
+    required: false
+  }],
+  general: [{
+    type: Buffer,
+    required: false
+  }],
+  other: [{
+    type: Buffer,
+    required: false
+  }]
 });
 
 const Registration = mongoose.model('Registration', RegistrationSchema, 'Registrations');

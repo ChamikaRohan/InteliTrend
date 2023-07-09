@@ -276,5 +276,106 @@ router.get('/profile', async (req, res) => {
   }
 });
 
+// Route to handle POST requests to upload documents to MongoDB
+router.post('/upload-doc', upload.single('doc'), async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]; // Get the JWT token from the request headers
+
+    const decoded = jwt.verify(token, 'your secret here');
+    const userId = decoded.userId; // Retrieve the userId from the decoded token
+
+    
+    if (!req.file) {
+      return res.status(400).json({ msg: 'No file uploaded.' });
+    }
+
+    // Read the file from the server's temporary storage
+    const fileBuffer = fs.readFileSync(req.file.path);
+
+    // Push the new document to the `doc` array in the user document
+    await Registration.findByIdAndUpdate(userId, { $push: { doc: fileBuffer } });
+
+    // Delete the temporary file from the server
+    fs.unlinkSync(req.file.path);
+
+    res.json({ msg: 'Document uploaded successfully.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error while uploading document.');
+  }
+});
+
+router.post('/upload-doce', upload.single('doc'), async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]; // Get the JWT token from the request headers
+
+    const decoded = jwt.verify(token, 'your secret here');
+    const userId = decoded.userId; // Retrieve the userId from the decoded token
+
+    const type = req.headers.type;
+
+    if (!req.file) {
+      return res.status(400).json({ msg: 'No file uploaded.' });
+    }
+
+    // Read the file from the server's temporary storage
+    const fileBuffer = fs.readFileSync(req.file.path);
+
+    // Dynamically set the field name based on the 'type' value in the request
+    const updateField = {};
+    updateField[type] = fileBuffer;
+
+    // Update the specified field in the user document
+    await Registration.findByIdAndUpdate(userId, { $push: updateField });
+
+    // Delete the temporary file from the server
+    fs.unlinkSync(req.file.path);
+
+    res.json({ msg: 'Document uploaded successfully.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error while uploading document.');
+  }
+});
+
+
+router.get('/get-doc', async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1]; // Get the JWT token from the request headers
+
+    const decoded = jwt.verify(token, 'your secret here');
+    const userId = decoded.userId; // Retrieve the userId from the decoded token
+    const type = req.headers.type;
+
+    // Find the user document by userId
+    const user = await Registration.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found.' });
+    }
+
+    const fileBuffers = user[type]; // Get the array of file buffers based on the 'type' value
+
+    if (!fileBuffers || fileBuffers.length === 0) {
+      return res.status(404).json({ msg: 'No files found.' });
+    }
+
+    // Set the response content type as application/pdf
+    res.contentType('application/pdf');
+
+    // Send each file buffer as a separate response
+    fileBuffers.forEach((fileBuffer) => {
+      res.write(fileBuffer);
+      res.write('\n\n\n\t\t'); // Add a separator between files
+    });
+
+    res.end();
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error while retrieving files.');
+  }
+});
+
+
 
 module.exports = router;
