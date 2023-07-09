@@ -9,7 +9,7 @@ export default function search() {
         <div className="doctor-search-content">
         <input type="text" placeholder="Enter doctor's name" className="doctor-search-input" />
         <select className="doctor-specialty-select">
-          <option value="">Select Specialty</option>
+          <option value="all">Show All</option>
           <option value="cardiologist">Cardiologist</option>
           <option value="dermatologist">Dermatologist</option>
           <option value="neurologist">Neurologist</option>
