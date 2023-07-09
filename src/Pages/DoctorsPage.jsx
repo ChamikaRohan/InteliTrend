@@ -10,7 +10,6 @@ export default function Doctors() {
     <div>
         <Header/>
         <Doc_hero/>
-        <Search/>
         <Services/>
         <Footer/>
     </div>
